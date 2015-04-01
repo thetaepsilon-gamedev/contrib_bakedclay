@@ -1,7 +1,7 @@
---= Baked Clay (0.3) by TenPlus1
---= Code-base taken from default wool mod
+-- Baked Clay (0.4) by TenPlus1
 
 local clay = {}
+
 clay.dyes = {
 	{"white",      "White",      "basecolor_white"},
 	{"grey",       "Grey",       "basecolor_grey"},
@@ -27,67 +27,61 @@ minetest.register_craft({
 })
 
 for _, row in ipairs(clay.dyes) do
-	local name = row[1]
-	local desc = row[2]
-	local craft_color_group = row[3]
-	-- Node Definition
-	minetest.register_node("bakedclay:"..name, {
-		description = desc.." Baked Clay",
-		tiles = {"baked_clay_"..name..".png"},
-		groups = {cracky=3,bakedclay=1},
+
+	-- node definition
+	minetest.register_node("bakedclay:" .. row[1], {
+		description = row[2] .. " Baked Clay",
+		tiles = {"baked_clay_" .. row[1] ..".png"},
+		groups = {cracky=3, bakedclay=1},
 		sounds = default.node_sound_stone_defaults(),
 	})
-	if craft_color_group then
-		-- Crafting from dye and white clay
-		minetest.register_craft({
-			type = "shapeless",
-			output = "bakedclay:"..name,
-			recipe = {"group:dye,"..craft_color_group, "group:bakedclay"},
-		})
-	end
-	-- Register Stair
-	stairs.register_stair_and_slab("bakedclay_"..name, "bakedclay:"..name,
+
+	-- craft from dye and white clay
+	minetest.register_craft({
+		type = "shapeless",
+		output = "bakedclay:" .. row[1],
+		recipe = {"group:dye," .. row[3], "group:bakedclay"},
+	})
+
+	-- register stair and slab
+	stairs.register_stair_and_slab("bakedclay_".. row[1], "bakedclay:".. row[1],
 		{cracky=3},
-		{"baked_clay_"..name..".png"},
-		"Baked Clay "..desc.." Stair",
-		"Baked Clay "..desc.." Slab",
+		{"baked_clay_" .. row[1] .. ".png"},
+		"Baked Clay " .. row[2] .. " Stair",
+		"Baked Clay " .. row[2] .. " Slab",
 		default.node_sound_stone_defaults())
 end
 
---=  Register a few extra Dye Colour Options
+-- register a few extra dye colour options
 
 minetest.register_craft( {
-       type = "shapeless",
-       output = "dye:dark_grey 3",
-       recipe = {
-               "dye:black",
-               "dye:black",
-               "dye:white",
+	type = "shapeless",
+	output = "dye:dark_grey 3",
+	recipe = {
+		"dye:black", "dye:black", "dye:white",
 	},
 })
 
 minetest.register_craft( {
-       type = "shapeless",
-       output = "dye:grey 3",
-       recipe = {
-               "dye:black",
-               "dye:white",
-               "dye:white",
+	type = "shapeless",
+	output = "dye:grey 3",
+	recipe = {
+		"dye:black", "dye:white", "dye:white",
 	},
 })
 
 minetest.register_craft( {
-       type = "shapeless",
-       output = "dye:green 4",
-       recipe = {
-               "default:cactus",
+	type = "shapeless",
+	output = "dye:green 4",
+	recipe = {
+		"default:cactus",
 	},
 })
 
 minetest.register_craft( {
-       type = "shapeless",
-       output = "dye:black 4",
-       recipe = {
-               "default:coal_lump",
+	type = "shapeless",
+	output = "dye:black 4",
+	recipe = {
+		"default:coal_lump",
 	},
 })
