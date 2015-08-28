@@ -1,8 +1,6 @@
 -- Baked Clay (0.4) by TenPlus1
 
-local clay = {}
-
-clay.dyes = {
+local clay = {
 	{"white",      "White",      "basecolor_white"},
 	{"grey",       "Grey",       "basecolor_grey"},
 	{"black",      "Black",      "basecolor_black"},
@@ -26,7 +24,7 @@ minetest.register_craft({
 	recipe = "default:clay",
 })
 
-for _, row in ipairs(clay.dyes) do
+for _, row in ipairs(clay) do
 
 	-- node definition
 	minetest.register_node("bakedclay:" .. row[1], {
@@ -44,12 +42,14 @@ for _, row in ipairs(clay.dyes) do
 	})
 
 	-- register stair and slab
+	if stairs and not stairs.mod then
 	stairs.register_stair_and_slab("bakedclay_".. row[1], "bakedclay:".. row[1],
 		{cracky=3},
 		{"baked_clay_" .. row[1] .. ".png"},
 		"Baked Clay " .. row[2] .. " Stair",
 		"Baked Clay " .. row[2] .. " Slab",
 		default.node_sound_stone_defaults())
+	end
 end
 
 -- register a few extra dye colour options
