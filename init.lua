@@ -1,21 +1,22 @@
+
 -- Baked Clay (0.4) by TenPlus1
 
 local clay = {
-	{"white",      "White",      "basecolor_white"},
-	{"grey",       "Grey",       "basecolor_grey"},
-	{"black",      "Black",      "basecolor_black"},
-	{"red",        "Red",        "basecolor_red"},
-	{"yellow",     "Yellow",     "basecolor_yellow"},
-	{"green",      "Green",      "basecolor_green"},
-	{"cyan",       "Cyan",       "basecolor_cyan"},
-	{"blue",       "Blue",       "basecolor_blue"},
-	{"magenta",    "Magenta",    "basecolor_magenta"},
-	{"orange",     "Orange",     "excolor_orange"},
-	{"violet",     "Violet",     "excolor_violet"},
-	{"brown",      "Brown",      "unicolor_dark_orange"},
-	{"pink",       "Pink",       "unicolor_light_red"},
-	{"dark_grey",  "Dark Grey",  "unicolor_darkgrey"},
-	{"dark_green", "Dark Green", "unicolor_dark_green"},
+	{"white", "White"},
+	{"grey", "Grey"},
+	{"black", "Black"},
+	{"red", "Red"},
+	{"yellow", "Yellow"},
+	{"green", "Green"},
+	{"cyan", "Cyan"},
+	{"blue", "Blue"},
+	{"magenta", "Magenta"},
+	{"orange", "Orange"},
+	{"violet", "Violet"},
+	{"brown", "Brown"},
+	{"pink", "Pink"},
+	{"dark_grey", "Dark Grey"},
+	{"dark_green", "Dark Green"},
 }
 
 minetest.register_craft({
@@ -24,21 +25,21 @@ minetest.register_craft({
 	recipe = "default:clay",
 })
 
-for _, row in ipairs(clay) do
+for _, row in pairs(clay) do
 
 	-- node definition
 	minetest.register_node("bakedclay:" .. row[1], {
 		description = row[2] .. " Baked Clay",
 		tiles = {"baked_clay_" .. row[1] ..".png"},
-		groups = {cracky=3, bakedclay=1},
+		groups = {cracky = 3, bakedclay = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
-	-- craft from dye and white clay
+	-- craft from dye and any baked clay
 	minetest.register_craft({
 		type = "shapeless",
 		output = "bakedclay:" .. row[1],
-		recipe = {"group:dye," .. row[3], "group:bakedclay"},
+		recipe = {"dye:" .. row[1], "group:bakedclay"},
 	})
 
 	-- register stair and slab
