@@ -96,3 +96,5 @@ minetest.register_craft( {
 		"default:dry_shrub",
 	},
 })
+
+print ("[MOD] Baked Clay loaded")
