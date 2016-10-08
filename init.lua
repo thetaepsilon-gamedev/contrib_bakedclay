@@ -1,5 +1,5 @@
 
--- Baked Clay (0.4) by TenPlus1
+-- Baked Clay (0.5) by TenPlus1
 
 local clay = {
 	{"white", "White"},
@@ -19,31 +19,38 @@ local clay = {
 	{"dark_green", "Dark Green"},
 }
 
-for n = 1, #clay do
+for _, clay in pairs(clay) do
 
 	-- node definition
-	minetest.register_node("bakedclay:" .. clay[n][1], {
-		description = clay[n][2] .. " Baked Clay",
-		tiles = {"baked_clay_" .. clay[n][1] ..".png"},
+
+	minetest.register_node("bakedclay:" .. clay[1], {
+		description = clay[2] .. " Baked Clay",
+		tiles = {"baked_clay_" .. clay[1] ..".png"},
 		groups = {cracky = 3, bakedclay = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
 
 	-- craft from dye and any baked clay
+
 	minetest.register_craft({
-		type = "shapeless",
-		output = "bakedclay:" .. clay[n][1],
-		recipe = {"dye:" .. clay[n][1], "group:bakedclay"},
+		output = "bakedclay:" .. clay[1] .. " 8",
+		recipe = {
+			{"group:bakedclay", "group:bakedclay", "group:bakedclay"},
+			{"group:bakedclay", "dye:" .. clay[1], "group:bakedclay"},
+			{"group:bakedclay", "group:bakedclay", "group:bakedclay"}
+		},
 	})
 
-	-- register stair and slab
+	-- register stair and slab (unless stairs redo active)
+
 	if stairs and not stairs.mod then
-	stairs.register_stair_and_slab("bakedclay_".. clay[n][1], "bakedclay:".. clay[n][1],
-		{cracky = 3},
-		{"baked_clay_" .. clay[n][1] .. ".png"},
-		clay[n][2] .. " Baked Clay Stair",
-		clay[n][2] .. " Baked Clay Slab",
-		default.node_sound_stone_defaults())
+
+		stairs.register_stair_and_slab("bakedclay_".. clay[1], "bakedclay:".. clay[1],
+			{cracky = 3},
+			{"baked_clay_" .. clay[1] .. ".png"},
+			clay[2] .. " Baked Clay Stair",
+			clay[2] .. " Baked Clay Slab",
+			default.node_sound_stone_defaults())
 	end
 end
 
