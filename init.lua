@@ -67,41 +67,31 @@ minetest.register_craft({
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:dark_grey 3",
-	recipe = {
-		"dye:black", "dye:black", "dye:white",
-	},
+	recipe = {"dye:black", "dye:black", "dye:white"}
 })
 
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:grey 3",
-	recipe = {
-		"dye:black", "dye:white", "dye:white",
-	},
+	recipe = {"dye:black", "dye:white", "dye:white"}
 })
 
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:green 4",
-	recipe = {
-		"default:cactus",
-	},
+	recipe = {"default:cactus"}
 })
 
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:black 4",
-	recipe = {
-		"default:coal_lump",
-	},
+	recipe = {"default:coal_lump"}
 })
 
 minetest.register_craft( {
 	type = "shapeless",
 	output = "dye:brown 4",
-	recipe = {
-		"default:dry_shrub",
-	},
+	recipe = {"default:dry_shrub"}
 })
 
 print ("[MOD] Baked Clay loaded")
