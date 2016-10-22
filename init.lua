@@ -1,5 +1,5 @@
 
--- Baked Clay (0.6) by TenPlus1
+-- Baked Clay by TenPlus1
 
 local clay = {
 	{"white", "White"},
@@ -41,9 +41,18 @@ for _, clay in pairs(clay) do
 		},
 	})
 
-	-- register stair and slab (unless stairs redo active)
+	-- register stairsplus stairs if found
+	if minetest.global_exists("stairsplus") then
 
-	if stairs and not stairs.mod then
+		stairsplus:register_all("bakedclay", clay[1], "bakedclay:" .. clay[1], {
+			description = clay[2] .. " Baked Clay",
+			tiles = {"baked_clay_" .. clay[1] .. ".png"},
+			groups = {cracky = 3},
+			sounds = default.node_sound_stone_defaults(),
+		})
+
+	-- register stair and slab (unless stairs redo active)
+	elseif stairs and not stairs.mod then
 
 		stairs.register_stair_and_slab("bakedclay_".. clay[1], "bakedclay:".. clay[1],
 			{cracky = 3},

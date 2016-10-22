@@ -7,6 +7,7 @@ https://forum.minetest.net/viewtopic.php?id=8890
 
 Changelog:
 
+- 0.7 - Added support for stairsplus so that stairs are registered properly
 - 0.6 - Added 3 new flowers and a new grass that are used for missing dyes
 - 0.5 - Now using minecraft recipe to colour baked clay (8x baked clay, 1x dye in centre)
 - 0.4 - Code tweak and tidy
