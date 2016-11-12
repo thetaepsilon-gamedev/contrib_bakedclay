@@ -14,3 +14,5 @@ Changelog:
 - 0.3 - Added Stairs and Slabs for each colour
 - 0.2 - Any colour of baked clay can be re-dyed into another colour
 - 0.1 - Initial Release
+
+Lucky Blocks: 4

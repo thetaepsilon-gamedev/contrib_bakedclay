@@ -221,4 +221,20 @@ minetest.register_decoration({
 	num_spawn_by = 1,
 })
 
+-- add lucky blocks
+
+if minetest.get_modpath("lucky_block") then
+local p = "bakedclay:"
+lucky_block:add_blocks({
+	{"dro", {"bakedclay:"}, 10, true},
+	{"fal", {p.."black", p.."blue", p.."brown", p.."cyan", p.."dark_green",
+		p.."dark_grey", p.."green", p.."grey", p.."magenta", p.."orange",
+		p.."pink", p.."red", p.."violet", p.."white", p.."yellow"}, 0},
+	{"fal", {p.."black", p.."blue", p.."brown", p.."cyan", p.."dark_green",
+		p.."dark_grey", p.."green", p.."grey", p.."magenta", p.."orange",
+		p.."pink", p.."red", p.."violet", p.."white", p.."yellow"}, 0, true},
+	{"dro", {p.."delphinium", p.."lazarus", p.."mannagrass"}, 6},
+})
+end
+
 print ("[MOD] Baked Clay loaded")
