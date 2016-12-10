@@ -103,9 +103,16 @@ minetest.register_craft( {
 	recipe = {"default:dry_shrub"}
 })
 
+-- 2x2 red bakedclay makes 16x clay brick
+minetest.register_craft( {
+	output = "default:clay_brick 16",
+	recipe = {
+		{"bakedclay:red", "bakedclay:red"},
+		{"bakedclay:red", "bakedclay:red"},
+	}
+})
+
 -- register some new flowers to fill in missing dye colours
-
-
 -- flower registration (borrowed from default game)
 
 local function add_simple_flower(name, desc, box, f_groups)
