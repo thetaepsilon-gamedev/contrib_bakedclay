@@ -44,7 +44,7 @@ for _, clay in pairs(clay) do
 	-- register stairsplus stairs if found
 	if minetest.global_exists("stairsplus") then
 
-		stairsplus:register_all("bakedclay", clay[1], "bakedclay:" .. clay[1], {
+		stairsplus:register_all("bakedclay", "baked_clay_" .. clay[1], "bakedclay:" .. clay[1], {
 			description = clay[2] .. " Baked Clay",
 			tiles = {"baked_clay_" .. clay[1] .. ".png"},
 			groups = {cracky = 3},
