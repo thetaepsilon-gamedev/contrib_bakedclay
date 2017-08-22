@@ -42,7 +42,7 @@ for _, clay in pairs(clay) do
 	})
 
 	-- register stairsplus stairs if found
-	if minetest.global_exists("stairsplus") then
+	if minetest.get_modpath("moreblocks") then
 
 		stairsplus:register_all("bakedclay", "baked_clay_" .. clay[1], "bakedclay:" .. clay[1], {
 			description = clay[2] .. " Baked Clay",
