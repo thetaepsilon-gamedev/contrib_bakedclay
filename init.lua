@@ -52,6 +52,8 @@ for _, clay in pairs(clay) do
 		})
 
 		stairsplus:register_alias_all("bakedclay", clay[1], "bakedclay", "baked_clay_" .. clay[1])
+		minetest.register_alias("stairs:slab_bakedclay_".. clay[1], "bakedclay:slab_baked_clay_" .. clay[1])
+		minetest.register_alias("stairs:stair_bakedclay_".. clay[1], "bakedclay:stair_baked_clay_" .. clay[1])
 
 	-- register stair and slab (unless stairs redo active)
 	elseif stairs and not stairs.mod then
