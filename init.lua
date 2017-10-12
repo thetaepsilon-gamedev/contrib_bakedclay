@@ -42,7 +42,7 @@ for _, clay in pairs(clay) do
 	})
 
 	-- register stairsplus stairs if found
-	if minetest.get_modpath("moreblocks") then
+	if minetest.get_modpath("moreblocks") and stairsplus then
 
 		stairsplus:register_all("bakedclay", "baked_clay_" .. clay[1], "bakedclay:" .. clay[1], {
 			description = clay[2] .. " Baked Clay",
@@ -244,7 +244,13 @@ lucky_block:add_blocks({
 	{"fal", {p.."black", p.."blue", p.."brown", p.."cyan", p.."dark_green",
 		p.."dark_grey", p.."green", p.."grey", p.."magenta", p.."orange",
 		p.."pink", p.."red", p.."violet", p.."white", p.."yellow"}, 0, true},
-	{"dro", {p.."delphinium", p.."lazarus", p.."mannagrass"}, 6},
+	{"dro", {p.."delphinium"}, 5},
+	{"dro", {p.."lazarus"}, 5},
+	{"dro", {p.."mannagrass"}, 5},
+	{"dro", {p.."thistle"}, 6},
+	{"flo", 5, {p.."black", p.."blue", p.."brown", p.."cyan", p.."dark_green",
+		p.."dark_grey", p.."green", p.."grey", p.."magenta", p.."orange",
+		p.."pink", p.."red", p.."violet", p.."white", p.."yellow"}, 2},
 })
 end
 
