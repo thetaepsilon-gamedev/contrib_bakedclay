@@ -19,6 +19,10 @@ local clay = {
 	{"dark_green", "Dark Green"},
 }
 
+local stairs_mod = minetest.get_modpath("stairs")
+local stairsplus_mod = minetest.get_modpath("moreblocks")
+	and minetest.global_exists("stairsplus")
+
 for _, clay in pairs(clay) do
 
 	-- node definition
@@ -42,7 +46,7 @@ for _, clay in pairs(clay) do
 	})
 
 	-- register stairsplus stairs if found
-	if minetest.get_modpath("moreblocks") and stairsplus then
+	if stairsplus_mod then
 
 		stairsplus:register_all("bakedclay", "baked_clay_" .. clay[1], "bakedclay:" .. clay[1], {
 			description = clay[2] .. " Baked Clay",
@@ -55,8 +59,17 @@ for _, clay in pairs(clay) do
 		minetest.register_alias("stairs:slab_bakedclay_".. clay[1], "bakedclay:slab_baked_clay_" .. clay[1])
 		minetest.register_alias("stairs:stair_bakedclay_".. clay[1], "bakedclay:stair_baked_clay_" .. clay[1])
 
-	-- register stair and slab (unless stairs redo active)
-	elseif stairs and not stairs.mod then
+	-- register all stair types for stairs redo
+	elseif stairs_mod and stairs.mod then
+
+		stairs.register_all("bakedclay_" .. clay[1], "bakedclay:" .. clay[1],
+			{cracky = 3},
+			{"baked_clay_" .. clay[1] .. ".png"},
+			clay[2] .. " Baked Clay",
+			default.node_sound_stone_defaults())
+
+	-- register stair and slab using default stairs
+	elseif stairs_mod then
 
 		stairs.register_stair_and_slab("bakedclay_".. clay[1], "bakedclay:".. clay[1],
 			{cracky = 3},
