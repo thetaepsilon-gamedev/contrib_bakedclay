@@ -36,15 +36,16 @@ for _, clay in pairs(clay) do
 	})
 
 	-- craft from dye and any baked clay
-
-	minetest.register_craft({
-		output = "bakedclay:" .. clay[1] .. " 8",
-		recipe = {
-			{"group:bakedclay", "group:bakedclay", "group:bakedclay"},
-			{"group:bakedclay", "dye:" .. clay[1], "group:bakedclay"},
-			{"group:bakedclay", "group:bakedclay", "group:bakedclay"}
-		},
-	})
+	if clay[1] ~= "natural" then
+		minetest.register_craft({
+			output = "bakedclay:" .. clay[1] .. " 8",
+			recipe = {
+				{"group:bakedclay", "group:bakedclay", "group:bakedclay"},
+				{"group:bakedclay", "dye:" .. clay[1], "group:bakedclay"},
+				{"group:bakedclay", "group:bakedclay", "group:bakedclay"}
+			},
+		})
+	end
 
 	-- register stairsplus stairs if found
 	if stairsplus_mod then
