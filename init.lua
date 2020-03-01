@@ -102,17 +102,20 @@ minetest.register_craft({
 
 -- register a few extra dye colour options
 
-minetest.register_craft( {
-	type = "shapeless",
-	output = "dye:dark_grey 3",
-	recipe = {"dye:black", "dye:black", "dye:white"}
-})
+-- don't clobber unifieddye's recipes.
+if not minetest.get_modpath("unifieddyes") then
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "dye:dark_grey 3",
+		recipe = {"dye:black", "dye:black", "dye:white"}
+	})
 
-minetest.register_craft( {
-	type = "shapeless",
-	output = "dye:grey 3",
-	recipe = {"dye:black", "dye:white", "dye:white"}
-})
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "dye:grey 3",
+		recipe = {"dye:black", "dye:white", "dye:white"}
+	})
+end
 
 minetest.register_craft( {
 	type = "shapeless",
